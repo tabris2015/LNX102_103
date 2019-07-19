@@ -1,4 +1,4 @@
-#
+#!/usr/bin/python
 
 # registrarse en https://darksky.net/dev/register
 

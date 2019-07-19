@@ -1,12 +1,14 @@
 [Unit]
 Description=Mi servicio del clima
 After=network.target
+StartLimitBurst=5
+StartLimitIntervalSec=10
 
 [Service]
 Type=simple
-ExecStart=
+ExecStart=/home/pepe/Documents/cognos/LNX102_103/scripts/python/clima.py
 Restart=on-failure
-
+RestartSec=1
 # The install section is needed to use
 # `systemctl enable` to start on boot
 # For a user service that you want to enable
