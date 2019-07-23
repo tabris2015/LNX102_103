@@ -53,7 +53,13 @@ for user in $users; do
         # comprimir carpeta
         backup_file="$backup_folder/${user}_$( date +%s ).tar"
         echo "Realizando backup... [$backup_file]"
-        
+        tar -cvf $backup_file $user_dir
+	# actualizando archivo de datos de backup
+	rm $backup_data_file	
+	touch $backup_data_file
+        echo "$n_files" >> $backup_data_file
+        echo "$n_dirs" >> $backup_data_file
+	
     else 
         echo "No hay cambios, backup innecesario"
     fi
