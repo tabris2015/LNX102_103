@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# obtener una lista de usuarios
-
+# verificar si se ha especificado un directorio de backups manualmente
 # verificar si existe el directorio backups, si no existe crearlo
 backup_folder="/tmp/backups"
 backups_data="$backup_folder/backups_data"
@@ -11,10 +10,10 @@ if [ -d "$backup_folder" ]; then
     echo "El directorio existe"
 else
     echo "El directorio NO existe, creando..."
-    mkdir -p /tmp/backups/backups_data
+    mkdir -p $backups_data
 fi
 
-
+# obtener una lista de usuarios
 users=$( ls /home )
 
 # para cada usuario en la lista
