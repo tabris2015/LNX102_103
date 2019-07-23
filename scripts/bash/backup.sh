@@ -3,10 +3,11 @@
 # obtener una lista de usuarios
 
 # verificar si existe el directorio backups, si no existe crearlo
-backups_data="/tmp/backups/backups_data"
+backup_folder="/tmp/backups"
+backups_data="$backup_folder/backups_data"
 
 echo "Verificando que exista el directorio de backups"
-if [ -d "/tmp/backups" ]; then
+if [ -d "$backup_folder" ]; then
     echo "El directorio existe"
 else
     echo "El directorio NO existe, creando..."
@@ -45,7 +46,17 @@ for user in $users; do
     user_dir="/home/$user"
     n_files=$(find $user_dir -type f | wc -l)
     n_dirs=$(find $user_dir -type d | wc -l)
-    echo "Encontrados $n_files archivos y $n_files carpetas"
+    echo "Encontrados $n_files archivos y $n_dirs carpetas"
+
+    if [ $n_files -ne $last_n_files ] || [ $n_dirs -ne $last_n_dirs ]; then
+        # hay diferencia entre el numero de archivos o carpetas
+        # comprimir carpeta
+        backup_file="$backup_folder/${user}_$( date +%s ).tar"
+        echo "Realizando backup... [$backup_file]"
+        
+    else 
+        echo "No hay cambios, backup innecesario"
+    fi
 done
 
 
