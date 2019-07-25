@@ -2,7 +2,6 @@
 host="192.168.0.155"
 user1="ftpuser1"
 
-
 function tx_ftp(){
     ftp -nvi <<EOF
     open $1
@@ -32,7 +31,7 @@ usuarios=(ftpuser1 ftpuser2 ftpuser3)
 for usuario in ${usuarios[@]}; do
     echo "Transfiriendo archivos del usuario $usuario"
     # ingresando a la carpeta temporal
-    cd /tmp
+    cd $temp_folder
     # transferir archivos 
     tx_ftp $host $usuario ${archivos[0]} ${archivos[1]}
 done
