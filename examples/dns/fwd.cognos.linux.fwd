@@ -1,0 +1,20 @@
+$TTL    6048000
+@   IN  SOA     primary.cognos.local. root.cognos.local. (
+                                                1002    ;Serial
+                                                3H	;Refresh
+                                                15M     ;Retry
+                                                1W	;Expire
+                                                1D	;Minimum TTL
+                                                )
+
+;Name Server Information
+@      IN  NS	   primary.cognos.local.
+@	IN	A	192.168.117.134
+;IP address of Name Server
+primary IN  A       192.168.117.134
+
+;Mail exchanger
+1w	IN	MX	10	mail.cognos.local.
+
+;A - Record HostName To IP Address
+mail    IN  A       192.168.117.135

@@ -1,0 +1,22 @@
+$TTL    604800
+@   IN  SOA     primary.cognos.local. root.cognos.local. (
+                                                1002    ;Serial
+                                                3H	;Refresh
+                                                15M     ;Retry
+                                                1W	;Expire
+                                                1D	;Minimum TTL
+                                                )
+
+;Name Server Information
+@ IN  NS      primary.cognos.local.
+@	IN	PTR     cognos.local.
+
+@	IN	A	192.168.117.134
+primary IN	A	192.168.117.134
+mail    IN	A	192.168.117.135
+
+;Reverse lookup for Name Server
+134        IN  PTR     primary.cognos.local.
+
+;PTR Record IP address to HostName
+135	 IN  PTR     mail.cognos.local.
